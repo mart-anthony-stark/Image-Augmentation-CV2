@@ -15,6 +15,15 @@ while True:
   if keyPressed == ord('q'):
     break
   elif keyPressed == ord("p"):
+    # Check whether the specified path exists or not
+    path = "captures"
+    isExist = os.path.exists(path)
+
+    if not isExist:
+      # Create a new directory because it does not exist 
+      os.makedirs(path)
+      print("The new directory is created!")
+      
     current_time = datetime.now().strftime("%d_%m_%Y_%H_%M_%S_%f")
     filename = "Recording-"+ current_time + ".jpg"
     if not cv2.imwrite('captures/'+filename, image):
