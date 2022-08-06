@@ -10,20 +10,22 @@ def capture_video():
 
   while True:
     ret, frame = capture.read()
-    # width = int(capture.get(3))
-    # height = int(capture.get(4))
+    width = int(capture.get(3))
+    height = int(capture.get(4))
 
     image = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
-    image = np.zeros(image.shape, np.uint8)
 
-    height = image.shape[0]
-    width = image.shape[1]
+    # image = np.zeros(image.shape, np.uint8)
+    # height = image.shape[0]
+    # width = image.shape[1]
 
-    smaller_frame = cv2.resize(image, (0, 0), fx=0.5, fy=0.5)
-    image[:height//2, :width//2] = cv2.rotate(smaller_frame, cv2.ROTATE_180)
-    image[height//2:, :width//2] = smaller_frame
-    image[:height//2, width//2:] = cv2.rotate(smaller_frame, cv2.ROTATE_180)
-    image[height//2:, width//2:] = smaller_frame
+    image = np.zeros(frame.shape, np.uint8)
+    smaller_frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
+
+    image[:height//2, :width//2] = cv2.rotate(smaller_frame, cv2.ROTATE_180) # top - left
+    image[height//2:, :width//2] = smaller_frame # bottom - left
+    image[:height//2, width//2:] = cv2.rotate(smaller_frame, cv2.ROTATE_180) # top - right
+    image[height//2:, width//2:] = smaller_frame # bottom - right
 
 
     cv2.imshow('frame', image)
