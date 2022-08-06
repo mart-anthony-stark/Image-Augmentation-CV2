@@ -15,9 +15,9 @@ def capture_video():
     cv2.imshow('frame', image)
 
     keyPressed = cv2.waitKey(1)
-    if keyPressed == ord('q'):
+    if keyPressed == ord('q'): # Quit program
       break
-    elif keyPressed == ord("p"):
+    elif keyPressed == ord("p"): # PrintScreen
       # Check whether the specified path exists or not
       path = "captures"
       isExist = os.path.exists(path)
