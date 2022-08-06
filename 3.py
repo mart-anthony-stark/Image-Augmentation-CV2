@@ -4,9 +4,9 @@ from datetime import datetime
 import os
 import ctypes  # An included library with Python install.   
 
-
 def capture_video():
-  capture = cv2.VideoCapture('assets/prototype.mp4')
+  videopath = 'assets/prototype.mp4'
+  capture = cv2.VideoCapture(videopath)
 
   while True:
     ret, frame = capture.read()
