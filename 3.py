@@ -10,9 +10,15 @@ def capture_video():
 
   while True:
     ret, frame = capture.read()
+    width = int(capture.get(3))
+    height = int(capture.get(4))
+
 
     image = cv2.resize(frame, (0,0), fx=0.5, fy=0.5)
-    cv2.imshow('frame', image)
+    image = np.zeros(image.shape, np.uint8)
+    smaller_frame = cv2.resize(frame, (0,0), fx=0.25, fy=0.25)
+
+    cv2.imshow('frame', smaller_frame)
 
     keyPressed = cv2.waitKey(1)
     if keyPressed == ord('q'): # Quit program
