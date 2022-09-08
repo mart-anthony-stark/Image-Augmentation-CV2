@@ -6,7 +6,7 @@ import ctypes  # An included library with Python install.
 
 def capture_video():
   videopath = 'assets/prototype.mp4'
-  capture = cv2.VideoCapture(videopath)
+  capture = cv2.VideoCapture(0)
 
   while True:
     ret, frame = capture.read()
